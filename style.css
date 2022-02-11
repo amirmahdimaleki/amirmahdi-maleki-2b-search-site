@@ -1,0 +1,28 @@
+header {
+  background-color: #dc3545;
+}
+
+/* .navbar {
+  background-color: #491616;
+} */
+
+h1 {
+  color: #dc3545;
+}
+body {
+  background-image: url(https://i.pinimg.com/736x/3b/a9/a9/3ba9a9b6e276b939c8c352fdeac06a6a.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.mask-custom {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 0, 0, 0.2);
+  height: 1000px;
+  width: 100%;
+  border-radius: 10px;
+}
