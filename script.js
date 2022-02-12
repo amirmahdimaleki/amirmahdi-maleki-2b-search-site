@@ -3,6 +3,7 @@ const form = document.querySelector(".d-flex");
 const glass = document.getElementById("glass");
 const select = document.querySelector(".form-select");
 
+
 //?  here i wanna take the form and add an event listener for search
 // todo
 form.addEventListener("submit", async function (e) {
