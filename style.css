@@ -17,18 +17,27 @@ body {
 }
 
 .mask-custom {
-  display: flex;
-  align-items: center;
   margin: 20px;
   backdrop-filter: blur(6px);
   background-color: rgba(255, 0, 0, 0.2);
-  height: 1000px;
-  width: 100%;
+  height: auto;
+  width: auto;
   border-radius: 10px;
 }
-
+#glass {
+  display: flex;
+  align-items: center;
+  margin: 25px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: auto;
+  width: auto;
+}
 /* .opt {
   display:flex;
   align-items: center;
   margin-left : 80px;
 } */
+.hidden {
+  display: none;
+}
