@@ -87,6 +87,9 @@ const data = episodes().then((res) => {
 
   //   }
 });
+
+
+
 // ! from search
 // todo complete the code below, then make a refresh button to refresh search and select results , finally make a footer for site
 const data2 = episodes().then((res) => {
