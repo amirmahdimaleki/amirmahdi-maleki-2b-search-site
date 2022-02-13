@@ -75,7 +75,7 @@ const data = episodes().then((res) => {
     glass.append(divCard);
     option.addEventListener("click", () => {
       if (option.innerText === seasonCard.innerText) {
-        divCard.classList.toggle("");
+        divCard.classList.toggle(".hidden");
       }
     });
   }
