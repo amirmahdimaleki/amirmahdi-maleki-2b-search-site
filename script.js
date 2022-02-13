@@ -80,7 +80,8 @@ const data = episodes().then((res) => {
     });
   }
   // ? appending all the series with name , season , summary , image and link
-
+ 
+  
   //   for (let i = 0; i < res.data.length; i++) {
   //     const ses = res.data[i].season;
   //     const epi = res.data[i].number;
