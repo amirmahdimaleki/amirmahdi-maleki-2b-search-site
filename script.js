@@ -73,11 +73,7 @@ const data = episodes().then((res) => {
     cardBody.append(cardTitle, seasonCard, cardText, cardATag);
     divCard.append(cardBody);
     glass.append(divCard);
-    option.addEventListener("click", () => {
-      if (option.innerText === seasonCard.innerText) {
-        divCard.classList.toggle(".hidden");
-      }
-    });
+    option.addEventListener("click", () => {});
   }
   // ? appending all the series with name , season , summary , image and link
 
@@ -88,37 +84,53 @@ const data = episodes().then((res) => {
   //   }
 });
 
-
-
 // ! from search
 // todo complete the code below, then make a refresh button to refresh search and select results , finally make a footer for site
-const data2 = episodes().then((res) => {
-  console.log(res);
+// const data2 = episodes().then((res) => {
+//   console.log(res);
 
-  const search = document.getElementById("search");
-  const results = glass;
-  let searchTerm = "";
+//   const search = document.getElementById("search");
+//   const results = glass;
+//   let searchTerm = "";
 
-  const showList = () => {
-    results.innerHTML = "";
-    data2
-      .filter((item) => {
-        return (
-          item.country.toLowerCase().includes(searchTerm) ||
-          item.name.toLowerCase().includes(searchTerm)
-        );
-      })
-      .forEach((e) => {
-        const li = document.createElement("li");
-        li.innerHTML = `<i>Name:</i> ${e.name}  || <i>Country:</i> ${e.country}`;
-        results.appendChild(li);
-      });
-  };
+//   const showList = () => {
+//     results.innerHTML = "";
+//     const seriesSum = res.data[i].summary;
+//     const seriesName = res.data[i].name;
+//     data2
+//       .filter((item) => {
+//         return (
+//           item.data.summary.toLowerCase().includes(searchTerm) ||
+//           item.data.name.toLowerCase().includes(searchTerm)
+//         );
+//       })
+//       .forEach((e) => {
+//         const li = document.createElement("li");
+//         li.innerHTML = `<i>Name:</i> ${e.data.name}  || <i>Country:</i> ${e.data.summary}`;
+//         results.appendChild(li);
+//       });
+//   };
 
-  showList();
+//   showList();
 
-  search.addEventListener("input", (event) => {
-    searchTerm = event.target.value.toLowerCase();
-    showList();
+//   search.addEventListener("input", (event) => {
+//     searchTerm = event.target.value.toLowerCase();
+//     showList();
+//   });
+// });
+
+// ========================================================================
+// ========================================================================
+
+// const search = document.querySelector("input");
+
+async function getData() {
+  const data = await axios.get("https://api.tvmaze.com/shows/5/episodes");
+  const movies = data.data;
+  search.addEventListener("keydown", (e) => {
+    const data3 = movies.filter((movie) => movie.body.includes(e.target.value));
+    console.log(data3);
   });
-});
+}
+
+getData();
