@@ -2,7 +2,7 @@ const button = document.querySelector(".form-control");
 const form = document.querySelector(".d-flex");
 const glass = document.getElementById("glass");
 const select = document.querySelector(".form-select");
-
+const search = document.querySelector('input[type="search"]');
 //?  here i wanna take the form and add an event listener for search
 // todo
 // form.addEventListener("submit", async function (e) {
@@ -32,13 +32,13 @@ const episodes = async () => {
   return res;
 };
 
-const data = episodes().then(async (res) => {
+const data = episodes().then((res) => {
   console.log(res);
   for (let i = 0; i < res.data.length; i++) {
     const ses = res.data[i].season;
     const epi = res.data[i].number;
     const option = document.createElement("option");
-    option.innerText = `S0${ses}E0${epi}`;
+    option.textContent = `S0${ses}E0${epi}`;
     option.value = `S0${ses}E0${epi}`;
     console.log(select);
     select.append(option);
@@ -59,23 +59,39 @@ const data = episodes().then(async (res) => {
     cardImg.src = seriesImage;
     cardImg.alt = seriesName;
     cardBody.className = "card-body";
-    cardTitle.innerText = seriesName;
+    cardTitle.textContent = seriesName;
     cardTitle.className = "card-title";
     seasonCard.className = "card-title";
-    seasonCard.innerText = `S0${ses}E0${epi}`;
+    seasonCard.textContent = `S0${ses}E0${epi}`;
     cardText.innerHTML = seriesSum;
     cardText.className = "card-text";
     cardATag.href = seriesUrl;
     cardATag.className = "btn btn-danger";
-    cardATag.innerText = "WATCH";
+    cardATag.textContent = "WATCH";
     divCard.style.margin = "25px";
     divCard.append(cardImg);
     cardBody.append(cardTitle, seasonCard, cardText, cardATag);
     divCard.append(cardBody);
-   glass.append(divCard);
+    glass.append(divCard);
     // option.addEventListener("click", () => {});
+    //  const api = await axios.get("https://api.tvmaze.com/shows/5/episodes");
+    const movie = res.data;
+    console.log(movie);
+    search.addEventListener("keydown", (e) => {
+      const searchRes = movie.filter((mov) => {
+        console.log(mov);
+        if (
+          mov.name.includes(e.target.value) ||
+          mov.summary.includes(e.target.value)
+        ) {
+          glass.append(divCard);
+        }
+      });
+      console.log(searchRes);
+    });
   }
   // ? appending all the series with name , season , summary , image and link
+  //  ? trying to bring the api to website and making a select tag for it
 
   //   for (let i = 0; i < res.data.length; i++) {
   //     const ses = res.data[i].season;
@@ -84,6 +100,8 @@ const data = episodes().then(async (res) => {
   //   }
 });
 
+const searchFunc = async () => {};
+searchFunc();
 // ! from search
 // todo complete the code below, then make a refresh button to refresh search and select results , finally make a footer for site
 // const data2 = episodes().then((res) => {
