@@ -32,7 +32,7 @@ const episodes = async () => {
   return res;
 };
 
-const data = episodes().then((res) => {
+const data = episodes().then(async (res) => {
   console.log(res);
   for (let i = 0; i < res.data.length; i++) {
     const ses = res.data[i].season;
@@ -66,14 +66,14 @@ const data = episodes().then((res) => {
     cardText.innerHTML = seriesSum;
     cardText.className = "card-text";
     cardATag.href = seriesUrl;
-    cardATag.className = "btn btn-primary";
+    cardATag.className = "btn btn-danger";
     cardATag.innerText = "WATCH";
     divCard.style.margin = "25px";
     divCard.append(cardImg);
     cardBody.append(cardTitle, seasonCard, cardText, cardATag);
     divCard.append(cardBody);
-    glass.append(divCard);
-    option.addEventListener("click", () => {});
+   glass.append(divCard);
+    // option.addEventListener("click", () => {});
   }
   // ? appending all the series with name , season , summary , image and link
 
@@ -124,13 +124,19 @@ const data = episodes().then((res) => {
 
 // const search = document.querySelector("input");
 
-async function getData() {
-  const data = await axios.get("https://api.tvmaze.com/shows/5/episodes");
-  const movies = data.data;
-  search.addEventListener("keydown", (e) => {
-    const data3 = movies.filter((movie) => movie.body.includes(e.target.value));
-    console.log(data3);
-  });
-}
+// async function getData() {
+//   const data = await axios.get("https://api.tvmaze.com/shows/5/episodes");
+//   return data;
+// }
 
-getData();
+// const search = getData().then((res) => {
+//   for (var i = 0; i < res.data.length; i++) {
+//     console.log(res.data[i].name);
+//     if (res[i].data.named) {
+
+//     }
+//   }
+// });
+
+// const cccc = document.querySelectorAll(".cards");
+// console.log(cccc);
