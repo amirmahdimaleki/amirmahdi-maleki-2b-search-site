@@ -2,7 +2,7 @@ const button = document.querySelector(".form-control");
 const form = document.querySelector(".d-flex");
 const glass = document.getElementById("glass");
 const select = document.querySelector(".form-select");
-const search = document.querySelector('input[type="search"]');
+const search = document.querySelector('input[type="text"]');
 //?  here i wanna take the form and add an event listener for search
 // todo
 // form.addEventListener("submit", async function (e) {
@@ -38,8 +38,6 @@ const data = episodes().then((res) => {
     const ses = res.data[i].season;
     const epi = res.data[i].number;
     const option = document.createElement("option");
-    option.textContent = `S0${ses}E0${epi}`;
-    option.value = `S0${ses}E0${epi}`;
     console.log(select);
     select.append(option);
     const seriesImage = res.data[i].image.medium;
@@ -73,22 +71,15 @@ const data = episodes().then((res) => {
     cardBody.append(cardTitle, seasonCard, cardText, cardATag);
     divCard.append(cardBody);
     glass.append(divCard);
-    // option.addEventListener("click", () => {});
-    //  const api = await axios.get("https://api.tvmaze.com/shows/5/episodes");
-    const movie = res.data;
-    console.log(movie);
-    search.addEventListener("keydown", (e) => {
-      const searchRes = movie.filter((mov) => {
-        console.log(mov);
-        if (
-          mov.name.includes(e.target.value) ||
-          mov.summary.includes(e.target.value)
-        ) {
-          glass.append(divCard);
-        }
-      });
-      console.log(searchRes);
+    option.textContent = `${seriesName}`;
+    option.value = ` ${seriesName} `;
+    select.addEventListener("change", (e) => {
+      console.log(e.target.value);
+      if (cardTitle.textContent === e.target.value) {
+        glass.append(divCard);
+      }
     });
+    //  const api = await axios.get("https://api.tvmaze.com/shows/5/episodes");
   }
   // ? appending all the series with name , season , summary , image and link
   //  ? trying to bring the api to website and making a select tag for it
@@ -142,10 +133,29 @@ searchFunc();
 
 // const search = document.querySelector("input");
 
-// async function getData() {
-//   const data = await axios.get("https://api.tvmaze.com/shows/5/episodes");
+async function getData() {
+  const data = await axios.get("https://api.tvmaze.com/shows/5/episodes");
+  return data;
+}
+const searcher = getData().then((res) => {
+  const movie = res.data;
+  console.log(movie);
+  search.addEventListener("keydown", (e) => {
+    const searchRes = movie.filter((mov) => {
+      console.log(mov);
+      console.log(e.target.value);
+      if (
+        mov.name.includes(e.target.value)
+        //  ||
+        // mov.summary.includes(e.target.value)
+      ) {
+        console.log("hello");
+      }
+    });
+    console.log(searchRes);
+  });
+});
 //   return data;
-// }
 
 // const search = getData().then((res) => {
 //   for (var i = 0; i < res.data.length; i++) {
