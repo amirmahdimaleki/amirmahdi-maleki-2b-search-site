@@ -16,7 +16,7 @@ form.addEventListener("keyup", async function (e) {
   console.log(search.value);
   const searchTerm = search.value;
   const config = { params: { q: searchTerm } };
-  const res = await axios.get(`http://api.tvmaze.com/search/shows`, config);
+  const res = await axios.get(`https://api.tvmaze.com/search/shows`, config);
   makeImages(res.data);
   // search.value = "";
 });
