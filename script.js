@@ -2,7 +2,7 @@ const button = document.querySelector(".form-control");
 const form = document.querySelector("#form");
 const glass = document.getElementById("glass");
 const select = document.querySelector(".form-select");
-const search = document.querySelector('input[type="text"]');
+const search = document.querySelector('input[type="search"]');
 const resDiv = document.querySelector(".result");
 const refreshBtn = document.querySelector(".float");
 refreshBtn.addEventListener("click", () => {
@@ -85,10 +85,11 @@ const data = episodes().then((res) => {
     divCard.append(cardBody);
     glass.append(divCard);
     option.textContent = `${seriesName}`;
-    option.value = ` ${seriesName} `;
+    option.value = `${seriesName}-S0${ses}E0${epi}`;
     select.addEventListener("change", (e) => {
       console.log(e.target.value);
       if (cardTitle.textContent === e.target.value) {
+        console.log(divCard);
         glass.append(divCard);
       }
     });
