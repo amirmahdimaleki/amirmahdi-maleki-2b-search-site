@@ -10,6 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
       />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css" integrity="sha512-bSncow0ApIhONbz+pNI52n0trz5fMWbgteHsonaPk42JbunIeM9ee+zTYAUP1eLPky5wP0XZ7MSLAPxKkwnlzw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css" />
     <title>True detective</title>
@@ -25,7 +26,7 @@
       <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid">
           <h1>TRUE DETECTIVE SEARCH</h1>
-          <form class="d-flex">
+          <form class="d-flex" id="form">
             <input
               id="search"
               class="form-control me-2"
@@ -42,14 +43,22 @@
       <select class="form-select" aria-label="Default select example">
         <option selected>Open this select menu</option>
       </select>
-      <div class="bg-image">
-        <div class="mask mask-custom">
-          <div
-            id="glass"
-            class="d-flex justify-content-center align-items-center h-100"
-          ></div>
+      
+    </div>
+    <div class="bg-image">
+      <div class="mask mask-custom">
+        <div
+        id="glass"
+        class="d-flex justify-content-center align-items-center h-100"
+        >
+        <div class="result">
         </div>
       </div>
+    </div>
+    <a href="#" class="float">
+     
+<i class="fa-solid fa-arrow-rotate-right">refresh</i>
+</a>
     </main>
     <footer class="text-center text-white" style="background-color: #f1f1f1;">
   <!-- Grid container -->

@@ -1,31 +1,44 @@
 const button = document.querySelector(".form-control");
-const form = document.querySelector(".d-flex");
+const form = document.querySelector("#form");
 const glass = document.getElementById("glass");
 const select = document.querySelector(".form-select");
 const search = document.querySelector('input[type="text"]');
+const resDiv = document.querySelector(".result");
+const refreshBtn = document.querySelector(".float");
+refreshBtn.addEventListener("click", () => {
+  location.reload();
+});
 //?  here i wanna take the form and add an event listener for search
 // todo
-// form.addEventListener("submit", async function (e) {
-//   e.preventDefault();
-//   const searchTerm = form.elements.query.value;
 
-//   const res = await axios.get(
-//     `https://api.tvmaze.com/search/shows/5?q=${searchTerm}`
-//   );
+form.addEventListener("keyup", async function (e) {
+  e.preventDefault();
+  console.log(search.value);
+  const searchTerm = search.value;
+  const config = { params: { q: searchTerm } };
+  const res = await axios.get(`http://api.tvmaze.com/search/shows`, config);
+  makeImages(res.data);
+  // search.value = "";
+});
 
-//   makeImages(res.data);
-//   form.elements.query.value = "";
-// });
+const makeImages = (shows) => {
+  shows.filter((fil) => {
+    if (fil.show.name.includes(search.value)) {
+      const img = document.createElement("IMG");
 
-// const makeImages = (shows) => {
-//   for (let result of shows) {
-//     if (result.show.image) {
-//       const img = document.createElement("IMG");
-//       img.src = result.show.image.medium;
-//       document.body.append(img);
-//     }
-//   }
-// };
+      img.src = fil.show.image.medium;
+      resDiv.append(img);
+    }
+  });
+  // for (let result of shows) {
+  //   if (result.show.image) {
+  //     const img = document.createElement("IMG");
+  //     img.src = result.show.image.medium;
+  //     glass.append(img);
+  //   }
+  // }
+};
+
 const episodes = async () => {
   //  ? trying to bring the api to website and making a select tag for it
   const res = await axios.get("https://api.tvmaze.com/shows/5/episodes");
@@ -133,28 +146,6 @@ searchFunc();
 
 // const search = document.querySelector("input");
 
-async function getData() {
-  const data = await axios.get("https://api.tvmaze.com/shows/5/episodes");
-  return data;
-}
-const searcher = getData().then((res) => {
-  const movie = res.data;
-  console.log(movie);
-  search.addEventListener("keydown", (e) => {
-    const searchRes = movie.filter((mov) => {
-      console.log(mov);
-      console.log(e.target.value);
-      if (
-        mov.name.includes(e.target.value)
-        //  ||
-        // mov.summary.includes(e.target.value)
-      ) {
-        console.log("hello");
-      }
-    });
-    console.log(searchRes);
-  });
-});
 //   return data;
 
 // const search = getData().then((res) => {
