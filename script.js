@@ -51,7 +51,6 @@ const data = episodes().then((res) => {
     const ses = res.data[i].season;
     const epi = res.data[i].number;
     const option = document.createElement("option");
-    console.log(select);
     select.append(option);
     const seriesImage = res.data[i].image.medium;
     const seriesSum = res.data[i].summary;
@@ -93,20 +92,11 @@ const data = episodes().then((res) => {
         glass.append(divCard);
       }
     });
-    //  const api = await axios.get("https://api.tvmaze.com/shows/5/episodes");
   }
   // ? appending all the series with name , season , summary , image and link
   //  ? trying to bring the api to website and making a select tag for it
-
-  //   for (let i = 0; i < res.data.length; i++) {
-  //     const ses = res.data[i].season;
-  //     const epi = res.data[i].number;
-
-  //   }
 });
 
-const searchFunc = async () => {};
-searchFunc();
 // ! from search
 // todo complete the code below, then make a refresh button to refresh search and select results , finally make a footer for site
 // const data2 = episodes().then((res) => {
@@ -118,19 +108,19 @@ searchFunc();
 
 //   const showList = () => {
 //     results.innerHTML = "";
-//     const seriesSum = res.data[i].summary;
-//     const seriesName = res.data[i].name;
-//     data2
+//     // const seriesSum = res.data[i].summary;
+//     // const seriesName = res.data[i].name;
+//     res.data
 //       .filter((item) => {
+//         console.log(item);
 //         return (
-//           item.data.summary.toLowerCase().includes(searchTerm) ||
-//           item.data.name.toLowerCase().includes(searchTerm)
+//           item.summary.toLowerCase().includes(searchTerm) ||
+//           item.name.toLowerCase().includes(searchTerm)
 //         );
 //       })
 //       .forEach((e) => {
-//         const li = document.createElement("li");
-//         li.innerHTML = `<i>Name:</i> ${e.data.name}  || <i>Country:</i> ${e.data.summary}`;
-//         results.appendChild(li);
+//         console.log(e);
+
 //       });
 //   };
 
