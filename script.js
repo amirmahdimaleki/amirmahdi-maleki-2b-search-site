@@ -1,3 +1,7 @@
+// ! I completed the project but not that way i wanted . i had trouble with selecting those items and
+// ! search system . i think i should put the data inside a func in line 50, but i don know how to use
+// !than func and specially i have no time ... thanks ^_^
+
 const button = document.querySelector(".form-control");
 const form = document.querySelector("#form");
 const glass = document.getElementById("glass");
@@ -97,8 +101,8 @@ const data = episodes().then((res) => {
   //  ? trying to bring the api to website and making a select tag for it
 });
 
-// ! from search
-// todo complete the code below, then make a refresh button to refresh search and select results , finally make a footer for site
+// // ! from search
+// // todo complete the code below, then make a refresh button to refresh search and select results , finally make a footer for site
 // const data2 = episodes().then((res) => {
 //   console.log(res);
 
@@ -108,8 +112,8 @@ const data = episodes().then((res) => {
 
 //   const showList = () => {
 //     results.innerHTML = "";
-//     // const seriesSum = res.data[i].summary;
-//     // const seriesName = res.data[i].name;
+// const seriesSum = res.data[i].summary;
+// const seriesName = res.data[i].name;
 //     res.data
 //       .filter((item) => {
 //         console.log(item);
