@@ -15,33 +15,33 @@ refreshBtn.addEventListener("click", () => {
 //?  here i wanna take the form and add an event listener for search
 // todo
 
-form.addEventListener("keyup", async function (e) {
-  e.preventDefault();
-  console.log(search.value);
-  const searchTerm = search.value;
-  const config = { params: { q: searchTerm } };
-  const res = await axios.get(`https://api.tvmaze.com/search/shows`, config);
-  makeImages(res.data);
-  // search.value = "";
-});
+// form.addEventListener("keyup", async function (e) {
+//   e.preventDefault();
+//   console.log(search.value);
+//   const searchTerm = search.value;
+//   const config = { params: { q: searchTerm } };
+//   const res = await axios.get(`https://api.tvmaze.com/search/shows`, config);
+//   makeImages(res.data);
+//   // search.value = "";
+// });
 
-const makeImages = (shows) => {
-  shows.filter((fil) => {
-    if (fil.show.name.includes(search.value)) {
-      const img = document.createElement("IMG");
+// const makeImages = (shows) => {
+//   shows.filter((fil) => {
+//     if (fil.show.name.includes(search.value)) {
+//       const img = document.createElement("IMG");
 
-      img.src = fil.show.image.medium;
-      resDiv.append(img);
-    }
-  });
-  // for (let result of shows) {
-  //   if (result.show.image) {
-  //     const img = document.createElement("IMG");
-  //     img.src = result.show.image.medium;
-  //     glass.append(img);
-  //   }
-  // }
-};
+//       img.src = fil.show.image.medium;
+//       resDiv.append(img);
+//     }
+//   });
+//   // for (let result of shows) {
+//   //   if (result.show.image) {
+//   //     const img = document.createElement("IMG");
+//   //     img.src = result.show.image.medium;
+//   //     glass.append(img);
+//   //   }
+//   // }
+// };
 
 const episodes = async () => {
   //  ? trying to bring the api to website and making a select tag for it
@@ -89,11 +89,30 @@ const data = episodes().then((res) => {
     glass.append(divCard);
     option.textContent = `${seriesName}`;
     option.value = `${seriesName}-S0${ses}E0${epi}`;
+    // * search input code *****************************************************
+    search.addEventListener("keydown", () => {
+      let searchTerm = search.value;
+      select.value = "All";
+      if (
+        res.data[i].name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        res.data[i].summary.toLowerCase().includes(searchTerm.toLowerCase())
+      ) {
+        divCard.classList.remove("hidden");
+      } else {
+        divCard.classList.add("hidden");
+      }
+    });
+    // * select input code *****************************************************
     select.addEventListener("change", (e) => {
       console.log(e.target.value);
-      if (cardTitle.textContent === e.target.value) {
+      if (cardTitle.textContent === !e.target.value) {
         console.log(divCard);
-        glass.append(divCard);
+        divCard.classList.add("hidden");
+      } else {
+        divCard.classList.remove("hidden");
+      }
+      if (e.target.value === "Open this select menu") {
+        divCard.classList.remove("hidden");
       }
     });
   }
