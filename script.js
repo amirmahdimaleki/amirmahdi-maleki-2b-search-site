@@ -105,13 +105,12 @@ const data = episodes().then((res) => {
     // * select input code *****************************************************
     select.addEventListener("change", (e) => {
       console.log(e.target.value);
-      if (cardTitle.textContent === !e.target.value) {
-        console.log(divCard);
+      if (!e.target.value.includes(cardTitle.textContent)) {
         divCard.classList.add("hidden");
       } else {
         divCard.classList.remove("hidden");
       }
-      if (e.target.value === "Open this select menu") {
+      if (e.target.value === "All episodes") {
         divCard.classList.remove("hidden");
       }
     });
